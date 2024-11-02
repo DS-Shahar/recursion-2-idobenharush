@@ -1,0 +1,69 @@
+package גאיענ;
+
+public class Main {
+    public static void main(String[] args) {
+    	int n=5;
+        int[] arr = {0, 1, 2, 3, 4, 5, 6, 7};
+        int[] arrr = {0, 1, -5, 3, -7, 5, 6, 7};
+    	System.out.println(sum(arr,n));
+    	System.out.println(positivenumber(arrr,n));
+    	int index=0;
+    	System.out.println(returnnumber(arrr,n,index));
+    	double[] arr1 = {0.5, 1.2 -5.2, 3.2, -7.2, 5.5, 6.3, 7.3};
+    	System.out.println(isSorted(arr1,index));
+    	int divisor=2;
+    	System.out.println(isprime(arr,index));
+    }
+    public static int sum(int [] arr, int n) {
+    	if(n==0) {
+    		return arr[0];
+    	}
+    	return sum(arr,n-1)+arr[n];
+    }
+    public static int positivenumber(int [] arrr, int n) {
+    	if(n==0) {
+    		return arrr[0];
+    	}
+    	if(arrr[n]>=0) {
+    		return positivenumber(arrr,n-1)+1;
+    	}
+    	return positivenumber(arrr,n-1);
+    }
+    public static int returnnumber(int [] arr, int n,int index) {
+        if (index == arr.length) {
+            return -1;
+        }
+        if (arr[index] == n) {
+            return index;
+        }
+                return returnnumber(arr, n, index + 1);
+    }
+    public static boolean ex8(int n, int divisor) {
+    	if(divisor>(n/2)+1) {
+    		return true;
+    	}
+    	if(n%divisor==0) {
+    		return false;
+    	}
+    	return ex8(n,divisor+1);
+    }
+    public static boolean isSorted(double [] arr1,int index) {
+    	if (index == arr1.length - 1) {
+            return true;
+        }
+        if (arr1[index] > arr1[index + 1]) {
+            return false;
+        }
+
+        return isSorted(arr1, index + 1);
+    }
+    public static boolean isprime(int [] arr,int index) {
+        if (index == arr.length) {
+            return true;
+        }
+        if (!ex8(arr[index], 2)) {
+            return false;
+        }
+        return isprime(arr, index + 1);
+    }
+}
